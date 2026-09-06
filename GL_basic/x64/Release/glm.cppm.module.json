@@ -1,0 +1,22 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "GL_basic\\x64\\Release\\glm.cppm.obj",
+            "outputs": [
+                "D:\\C++-projects\\GL_basic\\GL_basic\\x64\\Release\\vc143.pdb",
+                "GL_basic\\x64\\Release\\",
+                "D:\\C++-projects\\GL_basic\\GL_basic\\x64\\Release\\glm.cppm.ifc"
+            ],
+            "provides": [
+                {
+                    "logical-name": "glm",
+                    "source-path": "d:\\c++-projects\\gl_basic\\glm\\glm.cppm",
+                    "is-interface": true
+                }
+            ],
+            "requires": []
+        }
+    ]
+}
