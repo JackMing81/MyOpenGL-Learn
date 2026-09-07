@@ -1,3 +1,4 @@
+// light_cube
 // Vertex shader code
 
 #version 330 core

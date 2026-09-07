@@ -115,6 +115,19 @@ int main()
 			-0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
 	};
 
+	glm::vec3 cubePositions[] = {
+		glm::vec3(0.0f,  0.0f,  0.0f),
+		glm::vec3(2.0f,  5.0f, -15.0f),
+		glm::vec3(-1.5f, -2.2f, -2.5f),
+		glm::vec3(-3.8f, -2.0f, -12.3f),
+		glm::vec3(2.4f, -0.4f, -3.5f),
+		glm::vec3(-1.7f,  3.0f, -7.5f),
+		glm::vec3(1.3f, -2.0f, -2.5f),
+		glm::vec3(1.5f,  2.0f, -2.5f),
+		glm::vec3(1.5f,  0.2f, -1.5f),
+		glm::vec3(-1.3f,  1.0f, -1.5f)
+	};
+
 	// Vertex Buffer Objects (VBO)
 	// Vertex Array Object (VAO)
 	// Element Buffer Object (EBO)
@@ -259,31 +272,44 @@ int main()
 		glm::mat4 view = ourCamera.GetViewMatrix();
 
 		lightingShader.use();
-		lightingShader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
-		lightingShader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-		lightingShader.setVec3("light.direction", -0.2f, -1.0f, -0.3f);
 		lightingShader.setMat4("view", view);
 		lightingShader.setMat4("projection", projection);
-		glm::mat4 model(1.0f);
-		lightingShader.setMat4("model", model);
 
 		// struct
 		lightingShader.setInt("material.diffuse", 0);
 		lightingShader.setInt("material.specular", 1);
 		lightingShader.setFloat("material.shininess", 12.8f);
 
+		lightingShader.setVec3("light.position", ourCamera.Position);
+		lightingShader.setVec3("light.direction", ourCamera.Front);
+		lightingShader.setFloat("light.cutOff", glm::cos(glm::radians(12.5f)));
+		lightingShader.setFloat("light.outerCutOff", glm::cos(glm::radians(17.5f)));
 		lightingShader.setVec3("light.ambient", 0.2f, 0.2f, 0.2f);
 		lightingShader.setVec3("light.diffuse", 0.5f, 0.5f, 0.5f);
 		lightingShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
 
-		//lightingShader.setVec3("light.ambient", 1.0f, 1.0f, 1.0f);
-		//lightingShader.setVec3("light.diffuse", 1.0f, 1.0f, 1.0f);
-		//lightingShader.setVec3("light.specular", 1.0f, 1.0f, 1.0f);
+		// 1/(K1 + K2 * d + K3 * d^2)
+		lightingShader.setFloat("light.constant", 1.0f);
+		lightingShader.setFloat("light.linear", 0.09f);
+		lightingShader.setFloat("light.quadratic", 0.032f);
 
-		glm::mat3 ourNormal = glm::mat3(glm::transpose(glm::inverse(model)));
-		lightingShader.setMat3("ourNormal", ourNormal);
+		
 		lightingShader.setVec3("viewPos", ourCamera.Position.x,
 			ourCamera.Position.y, ourCamera.Position.z);
+
+		for (unsigned int i = 0; i < 10; i++)
+		{
+			glm::mat4 model(1.0f);
+			model = glm::translate(model, cubePositions[i]);
+			float angle = 20.0f * i;
+			model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
+			lightingShader.setMat4("model", model);
+
+			glm::mat3 ourNormal = glm::mat3(glm::transpose(glm::inverse(model)));
+			lightingShader.setMat3("ourNormal", ourNormal);
+
+			glDrawArrays(GL_TRIANGLES, 0, 36);
+		}
 
 		glBindVertexArray(cubeVAO);
 		glDrawArrays(GL_TRIANGLES, 0, 36);

@@ -1,3 +1,4 @@
+// colors
 // Vertex shader code
 
 #version 330 core
