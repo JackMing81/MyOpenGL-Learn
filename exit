@@ -1,0 +1,56 @@
+[33mcommit 548d97a42207f089b3e00e0504a2c1b20733ef31[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: qym <qym20130801@outlook.com>
+Date:   Mon Sep 7 20:03:33 2026 +0800
+
+    OpenGL-Light casters latest
+
+.gitignore
+GL_Color.vcxproj
+GL_Color/x64/Debug/GL_Color.ilk
+GL_Color/x64/Debug/GL_Color.tlog/CL.command.1.tlog
+GL_Color/x64/Debug/GL_Color.tlog/CL.read.1.tlog
+GL_Color/x64/Debug/GL_Color.tlog/CL.write.1.tlog
+GL_Color/x64/Debug/Shader.obj
+GL_Color/x64/Debug/main.obj
+GL_Color/x64/Debug/vc143.idb
+GL_Color/x64/Debug/vc143.pdb
+GL_Color/x64/Release/GL_Color.iobj
+GL_Color/x64/Release/GL_Color.ipdb
+GL_Color/x64/Release/GL_Color.log
+GL_Color/x64/Release/GL_Color.tlog/CL.command.1.tlog
+GL_Color/x64/Release/GL_Color.tlog/CL.read.1.tlog
+GL_Color/x64/Release/GL_Color.tlog/CL.write.1.tlog
+GL_Color/x64/Release/GL_Color.tlog/Cl.items.tlog
+GL_Color/x64/Release/GL_Color.tlog/link.command.1.tlog
+GL_Color/x64/Release/GL_Color.tlog/link.read.1.tlog
+GL_Color/x64/Release/GL_Color.tlog/link.secondary.1.tlog
+GL_Color/x64/Release/GL_Color.tlog/link.write.1.tlog
+GL_Color/x64/Release/Shader.obj
+GL_Color/x64/Release/glad.obj
+GL_Color/x64/Release/main.obj
+GL_Color/x64/Release/vc143.pdb
+Shader.cpp
+Shader.h
+Shaders/colors.fs
+Shaders/colors.vs
+Shaders/light_cube.vs
+main.cpp
+x64/Debug/GL_Color.exe
+x64/Debug/GL_Color.pdb
+x64/Debug/Shaders/colors.fs
+x64/Debug/Shaders/colors.vs
+x64/Debug/Shaders/light_cube.fs
+x64/Debug/Shaders/light_cube.vs
+x64/Debug/Sources/Images/beif3n3.png
+x64/Debug/Sources/Images/beifen (2).png
+x64/Debug/Sources/Images/container2.png
+x64/Debug/Sources/Images/container2_specular.png
+x64/Debug/Sources/container2.png
+x64/Debug/glfw3.dll
+x64/Release/GL_Color.exe
+x64/Release/GL_Color.pdb
+x64/Release/Shaders/colors.fs
+x64/Release/Shaders/colors.vs
+x64/Release/Shaders/light_cube.fs
+x64/Release/Shaders/light_cube.vs
+x64/Release/glfw3.dll
